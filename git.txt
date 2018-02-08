@@ -1,0 +1,36 @@
+1. git的基础：
+	中文版教程：https://git-scm.com/book/zh/v2
+	英文版教程：https://git-scm.com/book/en/v2
+
+	1> git是完全分布式，可以管理类似Linux内核级别的超大规模的项目
+	2> 速度快，设计简单， 允许上万个并行开发的分支
+	3> git的三种状态：
+		committed(已提交) modified(已修改)  stage(已暂存)  --> 对应三个工作区（git仓库，工作目录， 暂存区）
+	4> git的工作流：
+		工作目录修改文件
+		commit到暂存区域
+		push到仓库
+
+	5> 安装git
+		yum install git(Redhat系列) apt-get install git(debian系列)
+		源码安装：
+			tar -zxvf git-2.0.0.tar.gz
+			cd git-2.0.0
+			make configure
+			./configure --prefix=/usr
+			make
+			make install
+
+	6> 初次运行的配置：
+		git的配置位置有三个：
+			/etc/gitconfig : 系统的每一个用户及他们的通用配置 --system
+			~/.gitconfig ： 只针对当前用户  --global
+			.git/config ： 只针对此仓库  
+
+		配置用户名和邮件，不配置push将会失败，每一次提交都会写入这些信息
+			git config --global user.name "faith"
+			git config --global user.email "lmengyy@126.com"
+			(若系统默认的Emacs编辑器，需要设置  git config --global core.editor.emacs)
+		
+		检查配置信息： git config --list
+		查看帮助： git help config(查看config的帮助)
