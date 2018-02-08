@@ -1,4 +1,17 @@
 1. git的基础：
+	(
+	git常用命令列表:(按顺序)
+	git pull origin master(同步远程仓库)
+	git init (初始化仓库)
+	git add --all(追踪文件)
+	git commit -m "faith"(放入暂存区域)
+	git remote add origin https://github.com/Faithlmy/c.git(设置push的地址)
+	git push -u origin master(push到远程)
+	git status (查看工作区 状态)
+	git log(查看提交日志)
+	git reflog(日志的另一种形式)
+	git diff(查看不同点)
+	)
 	中文版教程：https://git-scm.com/book/zh/v2
 	英文版教程：https://git-scm.com/book/en/v2
 
@@ -34,3 +47,29 @@
 		
 		检查配置信息： git config --list
 		查看帮助： git help config(查看config的帮助)
+2. 获取git仓库：
+	1> clone远程 (三选一)
+		git clone git@10.129. ... . ...
+		git clone https://github.com/Faithlmy/c.git
+		git clone user@server:path/to/repo.git
+	2> 将现有的项目加入git
+		git init --all(加入所有文件)
+		git init m.c (只加入一个文件)
+		git commit -m "提交说明"
+
+3. 修改完记录到仓库：
+	git status (查看工作空间的状态)
+	git add file.name (跟踪文件)
+	git commit -m "说明" (提交到当前暂存区)
+	git rm file.name (从暂存区域移除文件)
+	git mv f1.name f2.name(移动文件) == git rm f1.name + git add f2.name
+
+4.查看提交日志：
+	查看帮助文档 git help log
+	git log
+	git log --graph
+	git log -p -2
+	git log --stat
+
+5. 撤销操作：
+	
