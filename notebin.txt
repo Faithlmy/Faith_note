@@ -1,0 +1,30 @@
+1. Directly use the command:
+
+Octal to decimal
+	echo $((0123));
+	echo $((8#123));
+	echo '0377' | awk '{print strtonum($0)}' (0 is zero)
+
+Decimal to Octal
+	echo "255"|awk '{printf("%o\n",$0)}'
+
+Hex  to decimal
+	echo $((0xff))
+	echo $((16#ff))
+	echo 'ff' | awk '{print strtonum("0x"$0)}'
+
+Decimal to hex
+	echo "255"|awk '{printf("%x\n",$0)}'
+
+Thirty Binary to decimal
+	echo $((32#ffff))
+	echo $((64#abc))
+
+Binary to decimal
+	echo $((2#1111111))
+	
+decimal to Binary
+	echo "obase=2;2"|bc
+	echo "obase = 8; 255"|bc
+	echo "obase = 16; 255"|bc
+
