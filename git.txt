@@ -48,10 +48,15 @@
 		检查配置信息： git config --list
 		查看帮助： git help config(查看config的帮助)
 2. 获取git仓库：
-	1> clone远程 (三选一)
+	1> clone远程 (git支持多种协议)
 		git clone git@10.129. ... . ...
 		git clone https://github.com/Faithlmy/c.git
 		git clone user@server:path/to/repo.git
+		git clone ssh://
+		git clone /home/to/c.git
+		git clone ftp[s]://
+		git clone rsync://
+		(各种协议的速度不同,git最快, 具体详见：https://git-scm.com/book/en/v2/Git-on-the-Server-The-Protocols)
 	2> 将现有的项目加入git
 		git init --all(加入所有文件)
 		git init m.c (只加入一个文件)
@@ -72,4 +77,31 @@
 	git log --stat
 
 5. 撤销操作：
+	git reflog 看提交的分支
+	git reset --hard  cbdfe63 将当前所在的分支撤回到cbdfe63，建议不要在master上操作
+
+6. git 远程仓库的使用
+	git clone 将原仓库里面的代码及分支全部复制到本地
+	git pull 将远程的代码拉到本地，后面可以接具体的分支，这个命令会将远程分支直接合并到当前的分支
+	git fetch 同步远程，但是合并，一般这样用：git fetch origin faith:hello  意思是将faith分支拉下来，在本地新建为hello，可以用 git diff 来看新拉下来的分支和当前分支的不同
+	git remote  查看远程主机名
+	git remote -v 查看远程主机网址
+	git clone -o jQuery https:// 用其他主机名
+
+7. git的标签
 	
+
+8. git分支
+	新建分支：git branch test
+	切换分支： git checkout test
+	新建并切换分支： git checkout -b test
+	合并分支到master：先git checkout master， 然后执行git merge test
+	删除分支：git branch -d test
+	删除远程分支： git push origin --delete test
+
+
+9. 合并冲突：
+	一般的冲突发生在两个分支同时修改一个文件，一个先提交，后提交者将会发生冲突
+	解决办法：
+		尽量不要两个分支同时修改一个文件
+		手动将冲突的地方改掉，然后再提交
