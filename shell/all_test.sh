@@ -57,5 +57,97 @@ else
 	echo "else"
 fi
 
-echo "--------嵌套if--------------------"
+echo "--------嵌套if(1)--------------------"
+if cd meng
+then
+	echo "meng"
+else
+	echo "yao"
+	if pwd
+	then
+		echo "inset if"
+	fi
+fi
+
+echo "-------嵌套if(2)----------------------"
+# 如果第一个if满足，elif将不会被执行
+if cd /
+then
+	echo "meng"
+elif cd ..
+then
+	echo "elif"
+fi
+
+echo "--------test测试------------------"
+a=1
+if test $a
+then
+	echo "Ture"
+else
+	echo "False"
+fi
+
+echo "---------test判断三类条件---------"
+#--数值比较--
+# n1 -eq n2  n1与n2是否相等
+# n1 -ge n2  大于或等于
+# n1 -gt n2  大于
+# n1 -le n2  小于或者等于
+# n1 -lt n2  等于
+# n1 -ne n2 不等于
+if [ $a -eq 1 ]
+then
+	echo "yes"
+else
+	echo "no"
+fi
+
+#--字符串比较--
+# s1 = s2
+# s1 != s2
+# s1 > s2
+# s1 < s2
+# n str1
+# z str1
+v1=book
+v2=boot
+# 字符串的相等性
+if [ $v1 = $v2 ] #字符串的标点和大小都会考虑在内
+then
+	echo "yes"
+else
+	echo "no"
+fi
+# 字符串的顺序
+if [ $v1 \< $v2 ] # 大于小于号必须转义，否则符号将会被看做重定向，字符串当做文件名。sort处理大写字母方法和test相反
+then
+	echo "yes"
+else
+	echo "no"
+fi
+# 字符串的大小
+# 空的和未初始化的变量会对脚本产生严重的影响，故在数值或者字符串比较之前用-z 和 -n测试一下
+if [ -n $v1 ]
+then
+	echo "yes"
+else
+	echo "no"
+fi
+
+if [ -z $v1 ]
+then
+	echo "yes"
+else
+	echo "no"
+fi
+
+# --文件比较--
+# -d file
+# -e file
+# -f file
+# -r file
+# -s file
+# -w file
+# -x file
 

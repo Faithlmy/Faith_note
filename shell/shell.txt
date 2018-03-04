@@ -128,4 +128,22 @@ shell脚本
 		length a        返回a字符串的长度
 		+a              将a解释成字符串，即使a是个关键字
 		(expression)    返回expression的值
-6. linux退出状态码
+6. linux退出状态码(echo $?)
+	0    命令成功结束
+	1    一般性未知错误
+	2    不适合的shell命令
+	126  命令不可执行
+	127  没有找到命令
+	128  无效的退出参数
+	128+x与Linux相关的严重错误
+	130  通过ctrl+c结束的命令
+	255  正常范围之外的退出状态码
+
+	exit 5脚本结束时指定一个状态码
+
+7. if 语句：详见all_shell.sh
+
+8. test命令
+	(详见all_shell.sh)
+	字符串比较
+	文件比较
