@@ -143,11 +143,164 @@ else
 fi
 
 # --文件比较--
-# -d file
-# -e file
-# -f file
-# -r file
-# -s file
-# -w file
-# -x file
+# -d file           file是否存在并是一个目录
+# -e file           file是否存在
+# -f file			file是否存在并是一个文件
+# -r file			file是否存在并是可读
+# -s file  			file存在并非空
+# -w file			file是否存在并可写
+# -x file			file是否存在并执行
+# -o file			file是否存在并属于当前用户所有
+# -G file			file是否存在并默认组与当前用户相同
+# file1 -nl file2   file1是否比file2新
+# file1 -ol file2   file1是否比file2旧
 
+dir=/home/faith
+if [ -d $dir ]
+then
+	echo "/home/faith"
+else
+	echo "no path"
+fi
+
+#  -------if  then的高级应用-------
+echo "-----------if then 的高级应用---------"
+vv=10
+kk=$vv
+if (( $vv ** 2 > 90))
+then
+	echo "vv**2 is "$kk
+else
+	echo "0"
+fi
+
+
+# -------for--------
+echo "-------for语句---------------"
+
+for i in a b c d
+do
+	echo "this is "$i
+done
+
+echo "-- 用单引号或者反斜杠来定义单引号的值--"
+
+for i in I don\'t know if "this'll" work
+do
+	echo $i
+done
+
+echo "----读取列表中的值----"
+list="a b c d"
+list=$list" faith"
+for i in list
+do
+	echo $list
+done
+
+echo "---从命令中读取文件：值-------"
+m="/home/faith/FaithMove/everyday/Faith_note/shell/for_file.txt"
+for i in $(cat $m)
+do
+	echo "this is $i "
+done
+
+echo "-------遍历目录--------"
+for i in /home/faith/*
+do
+	if [ -d "$i" ]
+	then
+		echo "$i is a dir"
+	elif [ -f "$i" ]
+	then
+		echo "$i is file"
+	fi
+done
+echo "---c语言风格的for循环----"
+for ((i=1; i<10; i++))
+do
+	echo "this is "$i
+done
+
+echo "---多变量-----"
+for ((a=1,b=10;a <= 10, b >5; a++,b--))
+do
+	echo "$a - $b"
+done
+
+
+echo "----while---"
+val=10
+while [ $val -gt 0 ]
+do
+	echo $val
+	val=$[ $val - 1 ]
+done
+
+echo "----循环嵌套---"
+for ((a=1;a < 4; a++))
+do
+	echo "outloop "$a
+	for ((b=1; b < 3; b++))
+	do
+		echo "   inloop "$b
+	done
+done
+
+
+echo "---break的使用----"
+# 跳出单个循环
+vax="1 2 3 4 5 6 7"
+for v in $vax
+do
+	if [ $v -eq 4 ]
+	then
+		break
+	fi
+	echo "$v"
+done
+
+# 跳出内循环
+for ((a=1; a < 3; a++))
+do
+	echo "outer loop"$a
+	for ((b=9; b > 5; b--))
+	do
+		if [ $b -eq 7 ]
+		then
+			break
+		fi
+		echo "  inner loop"$b
+	done
+done
+
+echo "---continue的使用(跳过此循环中的剩余命令)----"
+for ((val=1; val < 10; val++))
+do
+	if [ $val -ge 4 ] && [ $val -le 8 ]
+	then
+		continue
+	fi
+	echo $val
+done
+
+# continue 指定层级
+for (( a=1; a < 5; a++ ))
+do
+	echo "the a is "$a
+	for (( b=1; b < 8; b++ ))
+	do
+		if [ $b -ge 3 ] && [ $b -le 5 ]
+		then
+			continue 2
+		fi
+		echo "  this is b "$b
+	done
+done
+
+echo "-----循环输出重定向-----"
+p="/home/faith/FaithMove/everyday/Faith_note/shell"
+for i in 1 2 3 4 if 5
+do
+	echo "this is "$i
+done >> $p/outfor.txt

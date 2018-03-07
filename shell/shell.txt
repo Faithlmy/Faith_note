@@ -147,3 +147,27 @@ shell脚本
 	(详见all_shell.sh)
 	字符串比较
 	文件比较
+9. 双括号(())
+10.case:case命令会将指定的变量与不同模式进行比较,
+
+11. for
+	格式：
+		for var in list
+		do
+			commands
+		done
+12. while
+	格式
+	while test command
+	do
+		other command
+	done
+13. until
+	工作方式和while相反
+	until test command
+	do
+		other command
+	done
+14. 循环嵌套
+	
+15. break   continue
