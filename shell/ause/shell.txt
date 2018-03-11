@@ -181,3 +181,43 @@ shell脚本
 
 17. 重定向
 	1) 临时重定向
+	2) 永久重定向
+	3) 创建自己的重定向
+18. tee
+	date | tee testfile.txt(将date的结果放到testfile.txt中)
+	date | tee -a testfile.txt(给原来的结果追加值进入)
+	用tee可以将结果放入文件和显示的哦呵屏幕
+
+19. 常见的linux系统信号
+	信号            值            描述
+	1              SIGNUP         挂起进程
+	2              SIGINT         终止进程  (ctrl+c)
+	3              SIGQUIT        停止进程
+	9              SIGKILL        无条件终止进程(kill)
+	15             SIGTERM        尽可能终止进程
+	17             SIGSTOP        无条件停止进程，但不是终止进程
+	18             SIGTSTP        停止或者暂停进程，但是不终止进程(ctrl+z)
+	19             SIGCONT        继续运行停止的进程
+
+20. 捕获信号
+	trap  command   signal
+
+21. 后台脚本运行模式
+	脚本后面加 & 
+	非控制台运行脚本: nohup
+		nohup ./test.sh &
+
+22. 作业控制
+	jobs
+	bg
+	fg
+
+23. 调整谦让度
+	(-20优先级最高  +19优先级最底)
+	nice 
+	renice(系统级的优先级)
+
+24. 定时运行作业
+	at
+	cron
+	
