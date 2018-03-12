@@ -303,4 +303,8 @@ p="/home/faith/FaithMove/everyday/Faith_note/shell"
 for i in 1 2 3 4 if 5
 do
 	echo "this is "$i
-done >> $p/outfor.txt
+done > $p/outfor.txt
+
+# 处理用户输入
+echo "----处理用户输入---"
+
