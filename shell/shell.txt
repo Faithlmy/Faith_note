@@ -1,0 +1,173 @@
+1. shell的父子关系
+	#ps -f
+	进入的默认的是父shell(ps -f 可以查看)
+	#bash
+	#ps -f
+	此时已经有一个子shell(ps --forest可以查看)
+	#exit 可以退出一层shell
+2. 前后台切换
+	#sleep 10& (后台睡眠10s)
+	#jobs可以显示当前后台运行的进程
+
+3. 内建命令
+	1) 外部命令(文件系统命令, 不是shell程序的一部分), 一般位于/bin, /usr/bin, /sbin, /usr/sbin中
+		#which ps 只显示外部命令
+		#type -a ps 每个命令的两种实现
+	2) 执行外部命令，会创建一个子进程
+
+	3) 内建命令 cd
+		不需要创建子进程，效率高
+4. 环境变量
+	1) 查看全局变量
+		env
+		printenv
+		set
+		区别：set 显示全局， 局部， 用户定义的变量，并排序
+			  env 和 printenv 只显示全局变量，且不排序
+	2) 所有的环境变量均用大写字母，自己创建的局部变量用小写字母
+		设置环境变量：export
+		删除换将变量：unset
+		PATH的环境变量用: 分隔
+	
+	3) 登录shell
+		1> 登录shell会从5个不同的启动文件里读取命令
+			/etc/profile(bash默认主启动文件)
+			(以下4个各个发行版会启动其中1到2个)
+			$HOME/.bash_profile
+			$HOME/.bashrc
+			$HOME/.bash_login
+
+	4) 交互式shell
+		bash shell不是登录系统的时候启动，交互式shell不会访问/etc/profile文件
+		centos 中 .bashrc 一个作用是查看/etc下的bashrc， 二是为用户提供一个定制自己的命令别名和私有脚本函数
+			$HOME/.profile
+	5) 非交互式shell
+
+5. 数组变量
+	1) 一个变量多个值
+		$test=(one, two, three, four)
+		$echo $test  --> one,
+		$echo ${test[1]} --> two
+		$echo ${test[*]}
+
+6./etc/passwd
+7. /etc/shadow
+8. 创建用户  useradd
+	删除用户 userdel
+	修改用户：
+		usermod  修改用户账户字段
+		passwd 修改已有用户的密码
+		chpasswd  从文件中读取登录名密码对，并更新密码
+		chage  修改密码的过期日期
+		chfn  修改用户账户的备注日期
+		chsh  修改用户账户的默认登录shell
+9. Linux的组
+10. 文件权限
+
+11. 文件系统
+12. 日志文件系统
+13. 操作文件系统
+14. 逻辑卷管理
+15. Linux的LVM：两个版本LVM1  和  LVM2
+16. 软件的安装
+	debian --> PMS工具核心：apt-get  apt-cache  aptitude 
+	redhat --> yum  urpm  zypper
+
+17. 编辑器
+	vim
+	nano
+	emacs
+	KWrite
+	Kate
+	GNOME
+
+
+=======================================
+shell脚本
+
+1.定义变量
+	1) 三种方式定义变量
+		v = value
+		v = 'value'
+		v = "value"
+	2) 字母，数字，下划线组成
+		不能以数字开头
+		不能使用shell里面的关键字
+2. 变量使用：见test.sh
+3. 命令替换：见test.sh
+4. 输出重定向：
+	>   输出重定向(覆盖原文件)
+	>>  (不覆盖原文件)
+	<   输入重定向
+	<<  内联输入重定向
+		格式：
+			command << EOF
+				document
+			EOF
+
+5. 数学运算
+	expr
+	expr能识别的运算符号：
+		|  
+		&
+		<
+		<=
+		=
+		!=
+		>
+		>=
+		+
+		-
+		*
+		/
+		%
+		a : b           b匹配到了a中的某个模式，返回该模式匹配
+		match a b       b匹配到了a中的某个模式，返回该模式匹配
+		substr a b c    返回起始位置为b(从1开始计数)、长度为c个字符串的子字符串
+		index a b       在a中找b的位置
+		length a        返回a字符串的长度
+		+a              将a解释成字符串，即使a是个关键字
+		(expression)    返回expression的值
+6. linux退出状态码(echo $?)
+	0    命令成功结束
+	1    一般性未知错误
+	2    不适合的shell命令
+	126  命令不可执行
+	127  没有找到命令
+	128  无效的退出参数
+	128+x与Linux相关的严重错误
+	130  通过ctrl+c结束的命令
+	255  正常范围之外的退出状态码
+
+	exit 5脚本结束时指定一个状态码
+
+7. if 语句：详见all_shell.sh
+
+8. test命令
+	(详见all_shell.sh)
+	字符串比较
+	文件比较
+9. 双括号(())
+10.case:case命令会将指定的变量与不同模式进行比较,
+
+11. for
+	格式：
+		for var in list
+		do
+			commands
+		done
+12. while
+	格式
+	while test command
+	do
+		other command
+	done
+13. until
+	工作方式和while相反
+	until test command
+	do
+		other command
+	done
+14. 循环嵌套
+	
+15. break   continue
