@@ -272,6 +272,11 @@ shell脚本
 
 7. 正则表达式引擎：
 	linux中的正则表达式引擎:
-	POSIX基础正则表达式引擎： BRE引擎  
-	POSIX拓展正则表达式引擎： REE引擎
-	
+	POSIX基础正则表达式引擎： BRE 引擎  
+	POSIX拓展正则表达式引擎： REE 引擎
+
+8. tar 用于整理文件
+	tar -cf name.tar(依然是大文件)    解压：tar -xvf name.tar
+	tar -zcf name.tar.gz (文件压缩的比较小)  解压：tar -zxvf name.tar.gz -C /opt
+
+9. 
