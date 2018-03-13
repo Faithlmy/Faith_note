@@ -1,3 +1,3 @@
 #!/bin/bash
-./file_function9.sh
-fun1
+res=$(add 1 2)
+echo "$res"
