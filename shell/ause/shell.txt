@@ -242,5 +242,36 @@ shell脚本
 	全剧变量
 	local 局部变量
 4. 数组变量和函数
+
+5. 函数的创建
+	1) 命令行创建函数
+	2) 在.bashrc中创建函数，重新启动bash后可以在命令行直接使用此文件中的函数
+	3) shtool库
+	4) platform函数
+
+6. sed 和 gawk
+	1) sed = stream editor(流编辑器)
+	2) sed 不会修改源文件的数据，只会将修改后的数据返回到STDOUT
+	3) gawk: gawk '{print $1}' ./file_sed.txt
+	4) sed 's/\/bin/\bash\/bash/' /etc/passwd  \用于转义 == sed 's!/bin/bash!/bin'
+	5) 数字寻址：sed '2s/file/doc/' file_sed.txt  ==>  只将file_sed.txt中的第二行中的file换成doc
+			sed '2,3s/file/doc/' file_sed.txt  ==>  只将file_sed.txt中的第二行和第三行中的file换成doc
+			sed '2,$s/file/doc/' file_sed.txt  ==>  将file_sed.txt中的从第二行开始的file换成doc
+	6) 文本模式过滤器：
 	
+	7) 命令组合
+
+	8) 删除行
+		sed '2d' file_sed.txt
+		sed '2,3d' file_sed.txt
+		sed '2,$d' file_sed.txt
+	9) 插入 insert  i
+	10) 附加 append  a
+	11) 修改行 change 
+	12) 转换命令 transform
+
+7. 正则表达式引擎：
+	linux中的正则表达式引擎:
+	POSIX基础正则表达式引擎： BRE引擎  
+	POSIX拓展正则表达式引擎： REE引擎
 	
