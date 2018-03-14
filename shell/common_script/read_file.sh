@@ -25,4 +25,6 @@ function getdir() {
 #echo "Enter a path: "
 #read dir
 #dir="/home/faith/FaithMove/zm/Faith_note"
-getdir $2
+#getdir $1
+
+#
