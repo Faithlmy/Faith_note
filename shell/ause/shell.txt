@@ -279,4 +279,4 @@ shell脚本
 	tar -cf name.tar(依然是大文件)    解压：tar -xvf name.tar
 	tar -zcf name.tar.gz (文件压缩的比较小)  解压：tar -zxvf name.tar.gz -C /opt
 
-9. 
+9.常见脚本 
