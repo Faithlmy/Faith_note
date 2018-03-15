@@ -30,7 +30,22 @@
 		4> 隧道
 		5> Agent代理
 2.url与资源
+	1) url语法
+		<scheme>://<user>:<password>@<host>/<path>;<params>?<query>#<frag>
+		(方案)     (用户名)(密码)    (主机)  (路径) (参数)  (查询)  (片段)
+		(与大小写无关)
+	2) 相对url和绝对url
+	3) 自动扩展url
+		1> 主机名扩展：
+		2> 历史扩展
+	4) 字符
+		1> url字符集
+		2> 编码机制
+		3> 字符限制
+	5) web常用方案格式
+		http   https  mailto  ftp  rtsp  rtspu   file  news  telent
 3.http报文
+	1) 
 4.连接管理
 5.web服务器
 6.代理
