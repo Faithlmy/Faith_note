@@ -280,3 +280,30 @@ shell脚本
 	tar -zcf name.tar.gz (文件压缩的比较小)  解压：tar -zxvf name.tar.gz -C /opt
 
 9.常见脚本 
+
+10. awk命令的使用
+	##awk的工作流
+		awk工作流程是这样的：读入有'\n'换行符分割的一条记录，然后将记录按指定的域分隔符划分域，填充域，$0则表示所有域,$1表示第一个域,$n表示第n个域。默认域分隔符是"空白键" 或 "[tab]键",所以$1表示登录用户，$3表示登录用户ip,以此类推。
+	awk -F ':' '{}'  指定分隔符
+
+	1) awk '{if(NR>=2 && NR<=8)print $1}' tar_file.sh (输出tar_file.sh文件中的2-8行)
+	2) awk '{count++;$0;} END {print "user count is ", count}' /etc/passwd  统计用户的个数
+	3) awk '{count++;print $0;} END {print "user count is ", count}' /etc/passwd 统计用户的个数并输出相关用户
+	4) awk 'BEGIN {count=0;print "[start] user count is ",count} {count++; print $0} END {print "[end] user count is ", count}' /etc/passwd  统计用户的个数并输出相关用户
+	5) ls -al | awk 'BEGIN {size=0;} {size=size+$5;} END{print "[end] size is " size}' (统计当前文件夹下文件占用的字节数)
+	6) ls -al /root | awk 'BEGIN {size=0;} {size=size+$5;} END{print "[end] size is " size/1024/1024,"M"}'(统计/root下文件占用的字节数，并转换成M)
+	7) awk 'BEGIN{a=3;a+=5;print a}' 求和
+	8) awk 'BEGIN{a=3.9;a+=5;print a}' 小数
+	9) awk 'BEGIN{a=11;if(a>9){print "ok"}}'  ok
+	10)awk 'BEGIN{a="b"; print a=="b"?"ok":"error"}'(三目运算)
+	11)awk的运算符
+	12) awk的内置变量
+		$0  当前记录
+		$1-$n  当前记录的第n个字段
+		FS  输入字段分隔符，默认是空格
+		OFS 输出字段分隔符，默认是空格
+		RS  输入记录分隔符，默认是换行符
+		ORS 输出记录分隔符，默认是换行符
+		NF  当前记录的列数
+		NR  行号， 从1开始
+	13) awk的正则表达式
