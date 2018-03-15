@@ -45,7 +45,19 @@
 	5) web常用方案格式
 		http   https  mailto  ftp  rtsp  rtspu   file  news  telent
 3.http报文
-	1) 
+	1) 请求报文
+		1> 格式
+			<method> <requeest-URL><version>
+			<headers>
+
+			<entity-body>
+			
+	2) 相应报文
+		1> 格式
+			<version><status><resson-phrase>
+			<hearders>
+
+			<entity-body>
 4.连接管理
 5.web服务器
 6.代理
